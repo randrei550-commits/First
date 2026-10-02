@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Salut, API</title>
+</head>
+<body>
+  <h1>Primul meu proiect</h1>
+
+  <button id="buton">Cere un mesaj de la server</button>
+
+  <p id="raspuns" aria-live="polite"></p>
+
+  <script>
+    const buton = document.getElementById("buton");
+    const raspuns = document.getElementById("raspuns");
+
+    buton.addEventListener("click", async () => {
+      const cerere = await fetch("/api/salut");
+      const date = await cerere.json();
+      raspuns.textContent = date.mesaj + " Ora: " + date.ora;
+    });
+  </script>
+</body>
+</html>
